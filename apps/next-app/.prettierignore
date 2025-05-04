@@ -1,0 +1,32 @@
+# Ignore everything
+*
+!app/
+!app/**/*
+
+# Still ignore these specific files in app
+app/**/.DS_Store
+app/**/*.log
+
+# Build outputs
+.next/
+build/
+dist/
+out/
+
+# Package manager files
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Cache
+.cache/
+.eslintcache
+
+# Misc
+.git/
+.DS_Store
+*.log
+
+# Generated files
+next-env.d.ts 
