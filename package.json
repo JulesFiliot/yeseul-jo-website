@@ -2,5 +2,9 @@
   "private": true,
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "scripts": {
+    "studio": "pnpm --filter studio dev",
+    "web": "pnpm --filter yeseul-jo-website dev"
+  }
 }
