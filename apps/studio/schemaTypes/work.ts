@@ -1,8 +1,8 @@
 import {defineType, defineField} from 'sanity'
 
 export default defineType({
-  name: 'project',
-  title: 'Project',
+  name: 'work',
+  title: 'Work',
   type: 'document',
   fields: [
     defineField({
@@ -20,28 +20,6 @@ export default defineType({
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'starred',
-      title: 'Starred',
-      description: 'Starred projects take full width in the grid',
-      type: 'boolean',
-      initialValue: false,
     }),
     defineField({
       name: 'content',
@@ -94,7 +72,6 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage',
     },
   },
 })
