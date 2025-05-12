@@ -2,6 +2,7 @@ import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import { urlFor } from '../../lib/sanity';
 import { PortableTextBlock } from '@portabletext/types';
+import React from 'react';
 
 interface SanityImage {
   _type: 'image';
@@ -61,7 +62,7 @@ const components = {
     },
   },
   block: {
-    normal: ({ children }: { children?: any }) => (
+    normal: ({ children }: { children?: React.ReactNode }) => (
       <p className="text-justify">{children}</p>
     ),
   },
