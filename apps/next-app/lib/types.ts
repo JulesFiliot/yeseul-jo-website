@@ -12,11 +12,6 @@ export interface About {
   };
 }
 
-export interface WorkHero {
-  _id: string;
-  heroText: string;
-}
-
 export interface Work {
   _id: string;
   title: string;

@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { NavigationDropDown } from './NavigationDropDown';
 import { useEffect, useState } from 'react';
 import { client } from '../../../lib/sanity';

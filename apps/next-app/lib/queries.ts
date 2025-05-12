@@ -12,8 +12,6 @@ export const aboutQuery = groq`*[_type == "about"][0]{
   }
 }`;
 
-export const workHeroQuery = groq`*[_type == "workHero"][0]`;
-
 export const worksQuery = groq`
 *[_type == "work"] {
   _id,
