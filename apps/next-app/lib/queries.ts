@@ -14,25 +14,19 @@ export const aboutQuery = groq`*[_type == "about"][0]{
 
 export const workHeroQuery = groq`*[_type == "workHero"][0]`;
 
-export const projectsQuery = groq`
-*[_type == "project"] | order(starred desc) {
+export const worksQuery = groq`
+*[_type == "work"] {
   _id,
   title,
-  slug,
-  mainImage,
-  description,
-  starred
+  slug
 }
 `;
 
-export const projectBySlugQuery = groq`
-*[_type == "project" && slug.current == $slug][0] {
+export const workBySlugQuery = groq`
+*[_type == "work" && slug.current == $slug][0] {
   _id,
   title,
   slug,
-  mainImage,
-  description,
-  starred,
   content
 }
 `;

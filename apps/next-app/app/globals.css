@@ -1,20 +1,16 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
+  --background: #fff7ed;
   --foreground: #171717;
-  --primary: #333333;
-  --muted: #666666;
-  --border: #e5e5e5;
-  --radius: 0;
+  --highlight: #c195db;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-quicksand);
   line-height: 1.6;
-  font-size: 16px;
 }
 
 h1,

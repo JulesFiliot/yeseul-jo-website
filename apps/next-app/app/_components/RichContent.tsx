@@ -1,10 +1,32 @@
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import { urlFor } from '../../lib/sanity';
+import { PortableTextBlock } from '@portabletext/types';
+
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    url?: string;
+  };
+  alt?: string;
+  fullWidth?: boolean;
+  [key: string]: unknown;
+}
+
+interface SanityVideo {
+  _type: 'video';
+  asset: {
+    _ref: string;
+    url: string;
+  };
+  fullWidth?: boolean;
+  [key: string]: unknown;
+}
 
 const components = {
   types: {
-    image: ({ value }: any) => {
+    image: ({ value }: { value: SanityImage }) => {
       const imageUrl = urlFor(value)
         .width(value.fullWidth ? 1200 : 600)
         .url();
@@ -28,7 +50,7 @@ const components = {
         </div>
       );
     },
-    video: ({ value }: any) => {
+    video: ({ value }: { value: SanityVideo }) => {
       return (
         <div
           className={`${value.fullWidth ? 'w-full' : 'md:inline-block md:w-1/2'} my-8`}
@@ -40,7 +62,11 @@ const components = {
   },
 };
 
-export default function RichContent({ content }: { content: any }) {
+export default function RichContent({
+  content,
+}: {
+  content: PortableTextBlock[];
+}) {
   if (!content) return null;
 
   return (

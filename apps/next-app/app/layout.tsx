@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import Header from './components/Header';
+import { Navigation } from './_components/navigation/Navigation';
+import localFont from 'next/font/local';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -11,6 +12,11 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+});
+
+const quicksand = localFont({
+  src: '../public/fonts/Quicksand[wght].ttf',
+  variable: '--font-quicksand',
 });
 
 export const metadata: Metadata = {
@@ -26,10 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full w-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} h-full w-full px-4 pt-20 antialiased sm:px-20`}
+        className={`${geistSans.variable} ${geistMono.variable} ${quicksand.variable} flex h-full w-full px-4 pt-20 text-base sm:px-20`}
       >
-        <Header />
-        {children}
+        <Navigation />
+        <main className="flex-1">{children}</main>
       </body>
     </html>
   );
