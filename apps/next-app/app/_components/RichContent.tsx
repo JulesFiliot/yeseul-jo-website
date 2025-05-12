@@ -60,6 +60,11 @@ const components = {
       );
     },
   },
+  block: {
+    normal: ({ children }: { children?: any }) => (
+      <p className="text-justify">{children}</p>
+    ),
+  },
 };
 
 export default function RichContent({
