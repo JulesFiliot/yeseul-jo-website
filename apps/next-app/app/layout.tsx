@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full w-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${quicksand.variable} flex h-full w-full px-4 pt-20 text-base sm:px-20`}
+        className={`${geistSans.variable} ${geistMono.variable} ${quicksand.variable} flex h-full w-full px-4 pt-10 text-base md:px-6`}
       >
         <Navigation />
         <main className="flex-1">{children}</main>
