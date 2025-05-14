@@ -19,7 +19,7 @@ export function NavigationItem({
     >
       <span className="relative z-10">{title}</span>
       <span
-        className={`absolute top-3/5 bottom-0 left-1/6 w-full origin-left scale-x-0 bg-[var(--highlight)] opacity-40 transition-transform ${isHoverable ? `group-hover:scale-x-100` : ''} ${isActive ? 'scale-x-100' : ''} `}
+        className={`absolute top-3/5 bottom-0 left-1/6 w-full origin-left scale-x-0 bg-[var(--highlight)] transition-transform ${isHoverable ? `group-hover:scale-x-100` : ''} ${isActive ? 'scale-x-100' : ''} `}
       />
     </span>
   );

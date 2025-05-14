@@ -1,6 +1,6 @@
 import { client } from '../../../lib/sanity';
 import { workBySlugQuery, worksQuery } from '../../../lib/queries';
-import { Work } from '../../../lib/types';
+import { Work } from '../../../types/sanity';
 import RichContent from '../../../components/RichContent';
 import { notFound } from 'next/navigation';
 

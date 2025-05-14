@@ -4,59 +4,16 @@ import { NavigationSection } from './NavigationSection';
 import { useEffect, useState } from 'react';
 import { client } from '../../lib/sanity';
 import { worksQuery } from '../../lib/queries';
-import { Work } from '../../lib/types';
+import { Work } from '../../types/sanity';
 import { NavigationItem } from './NavigationItem';
 import { usePathname } from 'next/navigation';
-
-// A simple hamburger icon component
-const HamburgerIcon = ({ onClick }: { onClick: () => void }) => (
-  <button
-    onClick={onClick}
-    className="fixed top-4 right-4 z-50 rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none focus:ring-inset md:hidden"
-    aria-label="Open navigation menu"
-  >
-    <svg
-      className="h-6 w-6"
-      stroke="currentColor"
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M4 6h16M4 12h16m-7 6h7"
-      />
-    </svg>
-  </button>
-);
-
-// A simple close icon component
-const CloseIcon = ({ onClick }: { onClick: () => void }) => (
-  <button
-    onClick={onClick}
-    className="fixed top-4 right-4 z-50 rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none focus:ring-inset md:hidden"
-    aria-label="Close navigation menu"
-  >
-    <svg
-      className="h-6 w-6"
-      stroke="currentColor"
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M6 18L18 6M6 6l12 12"
-      />
-    </svg>
-  </button>
-);
+import { HamburgerIcon, CloseIcon } from '../../icons';
+import { useAtom } from 'jotai';
+import { isMobileMenuOpenAtom } from '../../state/navigationState';
 
 export function Navigation() {
   const [works, setWorks] = useState<Work[]>([]);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useAtom(isMobileMenuOpenAtom);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -69,7 +26,6 @@ export function Navigation() {
   }, []);
 
   useEffect(() => {
-    // Close mobile menu on route change
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
@@ -79,14 +35,26 @@ export function Navigation() {
   return (
     <>
       {isMobileMenuOpen ? (
-        <CloseIcon onClick={() => setIsMobileMenuOpen(false)} />
+        <button
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="fixed top-4 right-4 z-50 p-2 text-[var(--foreground)] focus:outline-none md:hidden"
+          aria-label="Close navigation menu"
+        >
+          <CloseIcon />
+        </button>
       ) : (
-        <HamburgerIcon onClick={() => setIsMobileMenuOpen(true)} />
+        <button
+          onClick={() => setIsMobileMenuOpen(true)}
+          className="fixed top-4 right-4 z-50 p-2 text-[var(--foreground)] focus:outline-none md:hidden"
+          aria-label="Open navigation menu"
+        >
+          <HamburgerIcon />
+        </button>
       )}
       <nav
         className={` ${
           isMobileMenuOpen
-            ? 'fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[var(--background)] p-4'
+            ? 'fixed inset-0 z-40 mt-2 flex h-[200dvh] w-dvw flex-col overflow-hidden bg-[var(--background)] p-4'
             : 'hidden'
         } text-base select-none md:relative md:inset-auto md:flex md:w-80 md:flex-col md:overflow-y-visible md:bg-transparent md:p-0`}
       >
