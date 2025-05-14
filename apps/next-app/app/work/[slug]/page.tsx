@@ -1,7 +1,7 @@
 import { client } from '../../../lib/sanity';
 import { workBySlugQuery, worksQuery } from '../../../lib/queries';
 import { Work } from '../../../lib/types';
-import RichContent from '../../_components/RichContent';
+import RichContent from '../../../components/RichContent';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {

@@ -1,10 +1,10 @@
 'use client';
 
-import { NavigationDropDown } from './NavigationDropDown';
+import { NavigationSection } from './NavigationSection';
 import { useEffect, useState } from 'react';
-import { client } from '../../../lib/sanity';
-import { worksQuery } from '../../../lib/queries';
-import { Work } from '../../../lib/types';
+import { client } from '../../lib/sanity';
+import { worksQuery } from '../../lib/queries';
+import { Work } from '../../lib/types';
 import { NavigationItem } from './NavigationItem';
 import { usePathname } from 'next/navigation';
 
@@ -86,16 +86,12 @@ export function Navigation() {
       <nav
         className={` ${
           isMobileMenuOpen
-            ? 'fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[#fff7ed] p-4'
+            ? 'fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[var(--background)] p-4'
             : 'hidden'
         } text-base select-none md:relative md:inset-auto md:flex md:w-80 md:flex-col md:overflow-y-visible md:bg-transparent md:p-0`}
       >
         <NavigationItem href="/" title="Home" isActive={pathname === '/'} />
-        <NavigationDropDown
-          isOpenDefault={true}
-          isClosable={false}
-          title="Work"
-        >
+        <NavigationSection title="Work">
           <>
             {works.map((work) => {
               const workHref = `/work/${work.slug.current}`;
@@ -112,7 +108,7 @@ export function Navigation() {
               <span className="text-gray-400">Loading...</span>
             )}
           </>
-        </NavigationDropDown>
+        </NavigationSection>
       </nav>
     </>
   );
