@@ -30,9 +30,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full w-full">
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${quicksand.variable} flex h-full w-full px-4 pt-10 text-base md:px-6`}
+        className={`${geistSans.variable} ${geistMono.variable} ${quicksand.variable} flex min-h-dvh w-dvw px-4 pt-10 text-base md:px-6`}
       >
         <Navigation />
         <main className="flex-1">{children}</main>
