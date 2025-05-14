@@ -12,7 +12,6 @@ async function getData() {
 
 export default async function HomePage() {
   const about = await getData();
-
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
       <p className="text-justify md:max-w-150">{about?.content || ''}</p>
